@@ -34,4 +34,4 @@ jobs:
     - name: Push Docker image
       run: |
         docker push ${{ secrets.DOCKER_USER }}/docker-graphql:v0.0.2
-    
+        echo 'Push correcto' 
