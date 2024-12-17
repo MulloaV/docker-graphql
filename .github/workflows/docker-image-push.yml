@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
 
@@ -34,4 +34,4 @@ jobs:
     - name: Push Docker image
       run: |
         docker push ${{ secrets.DOCKER_USER }}/docker-graphql:v0.0.2
-        echo 'Push correcto' 
+        echo 'Push correcto en Docker Hub' 
