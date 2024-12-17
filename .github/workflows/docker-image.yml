@@ -20,11 +20,12 @@ jobs:
 
     - name: Git Semantic Version
       uses: PaulHatch/semantic-version@v4.0.3
-      id: version
+      
       with:
         major_pattern: 'feat:'
         minor_pattern: 'fix:'
-        format: '${MAJOR}.${MINOR}.${PATCH}-prerelease.${increment}'
+        format: "${major}.${minor}.${patch}-rc${increment}"
+      id: version  
         
     - name: Login to Docker Hub
       env:
