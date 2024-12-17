@@ -29,10 +29,10 @@ jobs:
 
     - name: Build  Docker image
       run: |
-        docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USER }}/docker-graphql:v0.0.2
+        docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USER }}/docker-graphql:latest
         echo 'Build correcto'
         
     - name: Push Docker image
       run: |
-        docker push ${{ secrets.DOCKER_USER }}/docker-graphql:v0.0.2
+        docker push ${{ secrets.DOCKER_USER }}/docker-graphql:latest
         echo 'Push correcto en Docker Hub'
