@@ -31,19 +31,23 @@ jobs:
       env:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        APP_VERSION: ${{ steps.version.outputs.version }}
+        
 
       run: |
         echo 'Iniciando el login en docker hub'
         docker login -u $username -p $password
-        echo "Nueva version: $APP_VERSION"
+        
 
     - name: Build  Docker image
+      env:
+        APP_VERSION: ${{ steps.version.outputs.version }}
       run: |
         docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USER }}/docker-graphql:$APP_VERSION
         echo 'Build correcto'
         
     - name: Push Docker image
+      env:
+        APP_VERSION: ${{ steps.version.outputs.version }}
       run: |
         docker push ${{ secrets.DOCKER_USER }}/docker-graphql:$APP_VERSION
         echo 'Push correcto en Docker Hub'
